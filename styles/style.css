@@ -13,7 +13,7 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--main-font, serif);
+  font-family: var(--main-font), sans-serif;
   font-variation-settings: 'wght' var(--card-font-weight, 400);
   background-image:
     repeating-linear-gradient(
@@ -93,37 +93,39 @@
 .card_image {
   inline-size: 100%;
   display: block;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
 }
 
-.card:first-of-type .card_image {
+.filter_brightness {
   filter: brightness(50%);
 }
 
-.card:nth-of-type(2) .card_image {
+.filter_contrast {
   filter: contrast(1000%);
 }
 
-.card:nth-of-type(3) .card_image {
+.filter_opacity {
   filter: opacity(0.8);
 }
 
-.card:nth-of-type(4) .card_image {
+.filter_grayscale {
   filter: grayscale(0.8);
 }
 
-.card:nth-of-type(5) .card_image {
+.filter_saturate {
   filter: saturate(200%);
 }
 
-.card:nth-of-type(6) .card_image {
+.filter_sepia {
   filter: sepia(80%);
 }
 
-.card:nth-of-type(7) .card_image {
+.filter_invert {
   filter: invert(0.7);
 }
 
-.card:nth-of-type(8) .card_image {
+.filter_brightness_grayscale_sepia {
   filter: brightness(50%) grayscale(1) sepia(0.3);
 }
 
@@ -188,24 +190,24 @@
 }
 
 .card__like-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 130px;
   height: 38px;
-  font-family: var(--accent-font), serif;
-  border: 2px solid #000;
-  cursor: pointer;
-  background-color: #fff;
-  color: #000;
 }
 
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
   color: #fff;
   box-shadow: 2px 2px 0 transparent;
   background-color: #fff;
+  font-size: 14px;
+  border: 2px solid #000;
+  font-family: var(--accent-font), serif;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
 }
 
 .button:focus {
@@ -215,7 +217,6 @@
 .button:focus-visible {
   outline: none;
   box-shadow: 2px 2px 0 #000;
-  transition: box-shadow 0.3s ease;
 }
 
 .button::before {
@@ -239,17 +240,11 @@
 }
 
 .save_button {
-  display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
   margin: 50px auto 100px;
-  width: 355px;
+  width: 335px;
   height: 55px;
-  cursor: pointer;
   gap: 8px;
-  font-family: var(--accent-font), serif;
-  font-size: 14px;
 }
 
 .save_dialog {
@@ -259,7 +254,7 @@
   justify-content: center;
   border: 2px solid #000;
   width: 353px;
-  height: 191px;
+  min-height: 191px;
   gap: 30px;
 }
 
@@ -295,7 +290,7 @@
   font-size: 14px;
   gap: 30px;
   width: 293px;
-  height: 63px;
+  min-height: 63px;
 }
 
 dialog:not([open]) {
@@ -330,12 +325,12 @@ dialog::backdrop {
 
   .save_dialog {
     width: 341px;
-    height: 191px;
+    min-height: 191px;
   }
 
   .dialog_floppy_container {
     width: 261px;
-    height: 63px;
+    min-height: 63px;
   }
 
   .save_dialog_button {
